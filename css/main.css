@@ -1,0 +1,62 @@
+.img-responsive { display: block; height: auto; max-width: 100%; }
+
+body, html { overflow: hidden; }
+
+body {
+  background-image: url('../imgs/background/background-04.jpg');
+  background-repeat: repeat;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.slider {
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 0px 37px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 37px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 37px -5px rgba(0,0,0,0.75);
+}
+
+.slick-prev, .slick-next {
+  width: 50px;
+  height: 50px;
+  opacity: .4;
+  z-index: 10;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 50px;
+  color: #cecece;
+}
+
+.slider-page {
+  position: relative;
+}
+
+.sign-link {
+  position: absolute;
+}
+.sign-link:focus {
+  outline: none;
+}
+
+.mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
+  font-size: 50px;
+  width: 40px;
+  height: 40px;
+  top: 45px;
+  right: 5px;
+  text-align: center;
+  padding-right: 0;
+  background-color: #757575;
+  cursor: pointer !important;
+}
