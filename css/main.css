@@ -18,10 +18,14 @@ body {
   box-shadow: 0px 0px 37px -5px rgba(0,0,0,0.75);
 }
 
+.slick-slide {
+  outline: none !important;
+}
+
 .slick-prev, .slick-next {
   width: 50px;
   height: 50px;
-  opacity: .4;
+  opacity: .3;
   z-index: 10;
 }
 
@@ -35,7 +39,7 @@ body {
 
 .slick-prev:before, .slick-next:before {
   font-size: 50px;
-  color: #cecece;
+  color: #fff;
 }
 
 .slider-page {
