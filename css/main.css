@@ -53,6 +53,10 @@ body {
   outline: none;
 }
 
+.slick-dots {
+  bottom: 5px;
+}
+
 .mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
   font-size: 50px;
   width: 40px;
