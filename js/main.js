@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+  $('.slider').on('afterChange', function(event, slick, currentSlide){
+    if(currentSlide == 10){
+      console.log('show ad');
+    }
+  });
+
   $('.slider').on('init', function(event, slick){
 
     // Apply browser height to wrapper and slider blocks
@@ -24,7 +30,11 @@ $(document).ready(function(){
   $('.slider').slick({
     infinite: true,
     dots: false,
-    cssEase: 'linear'
+    cssEase: 'linear',
+    onAfterChange: function(){
+      console.log('changed');
+      //$('.current').text($('.slides').slickCurrentSlide()+1);
+    }
   });
 
   $(window).on('resize', function(){
