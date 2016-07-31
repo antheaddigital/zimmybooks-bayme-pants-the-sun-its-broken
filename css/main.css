@@ -1,6 +1,10 @@
 .img-responsive { display: block; height: auto; max-width: 100%; }
 
-body, html { overflow: hidden; }
+body, html {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
 
 body {
   background-image: url('../imgs/background/background-04.jpg');
