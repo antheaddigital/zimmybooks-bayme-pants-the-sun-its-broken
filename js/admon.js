@@ -94,13 +94,6 @@ function initAds() {
 
     registerAdEvents();
 
-    $('.slider').on('afterChange', function(event, slick, currentSlide){
-      if(currentSlide == 10){
-        alert('credits page');
-        admob.events.onAdLoaded({ adType : 'interstitial' });
-      }
-    });
-
   } else {
     alert('AdMobAds plugin not ready');
   }
@@ -126,6 +119,7 @@ function registerAdEvents() {
 function onDeviceReady() {
   document.removeEventListener('deviceready', onDeviceReady, false);
   initAds();
+  apFunctionality();
 
   // display a banner at startup
   admob.createBannerView();
