@@ -2,7 +2,9 @@ $(document).ready(function(){
 
   $('.slider').on('afterChange', function(event, slick, currentSlide){
     if(currentSlide == 10){
-      if(window.AdMob) AdMob.showInterstitial();
+      if(window.AdMob){
+        AdMob.showInterstitial();
+      }
     }
   });
 
@@ -69,13 +71,19 @@ $(document).ready(function(){
       };
     }
 
-    if(window.AdMob) AdMob.createBanner( {
+    if(window.AdMob){
+      AdMob.createBanner({
         isTesting:true, //Remove this Before publishing your app
         adId:admobid.banner,
         position:AdMob.AD_POSITION.BOTTOM_CENTER,
-        autoShow:true} );
+        autoShow:true
+      });
+    }
 
-    if(window.AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+    if(window.AdMob) AdMob.prepareInterstitial({
+      adId:admobid.interstitial,
+      autoShow:false
+    });
 
   }
 
