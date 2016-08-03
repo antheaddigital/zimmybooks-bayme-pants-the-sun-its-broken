@@ -1,14 +1,12 @@
 $('.slider').on('init', function(event, slick){
 
-  document.addEventListener("deviceready", function(){
-    $('.slider').on('afterChange', function(event, slick, currentSlide){
-      alert('change page');
-      if(currentSlide == 10){
-        alert('credits page');
-        admob.events.onAdLoaded({ adType : 'interstitial' });
-      }
-    });
-  }, false);
+  $('.slider').on('afterChange', function(event, slick, currentSlide){
+    //alert('change page');
+    if(currentSlide == 10){
+      //alert('credits page');
+      onAdLoaded();
+    }
+  });
 
   // Apply browser height to wrapper and slider blocks
   var browserHeight = $(window).height();
@@ -75,16 +73,14 @@ function initAds() {
 }
 
 function onAdLoaded(e) {
-  alert('load ad');
-  if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
-    alert('adtype pass');
+  //alert('load ad');
+  //if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+    //alert('adtype pass');
     admob.showInterstitialAd();
     showNextInterstitial = setTimeout(function() {
       admob.requestInterstitialAd();
     }, 2 * 60 * 1000); // 2 minutes
-  } else {
-    alert('adtype failed');
-  }
+  //}
 }
 
 function registerAdEvents() {
