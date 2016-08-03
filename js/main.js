@@ -65,6 +65,8 @@ function initAds() {
       isTesting: true
     });
 
+    admob.showInterstitialAd();
+
     registerAdEvents();
 
   } else {
