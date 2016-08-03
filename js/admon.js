@@ -99,12 +99,12 @@ function initAds() {
 }
 
 function onAdLoaded(e) {
-  if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+  //if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
     admob.showInterstitialAd();
     showNextInterstitial = setTimeout(function() {
       admob.requestInterstitialAd();
     }, 2 * 60 * 1000); // 2 minutes
-  }
+  //}
 }
 
 function registerAdEvents() {
