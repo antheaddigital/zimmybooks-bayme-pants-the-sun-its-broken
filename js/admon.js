@@ -100,13 +100,12 @@ function initAds() {
 }
 
 function onAdLoaded(e) {
-  console.log('onAdLoaded success');
-  // if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
-  //   admob.showInterstitialAd();
-  //   showNextInterstitial = setTimeout(function() {
-  //     admob.requestInterstitialAd();
-  //   }, 2 * 60 * 1000); // 2 minutes
-  // }
+  if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+    admob.showInterstitialAd();
+    showNextInterstitial = setTimeout(function() {
+      admob.requestInterstitialAd();
+    }, 2 * 60 * 1000); // 2 minutes
+  }
 }
 
 function registerAdEvents() {

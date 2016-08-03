@@ -2,11 +2,10 @@ $(document).ready(function(){
 
   $('.slider').on('afterChange', function(event, slick, currentSlide){
     if(currentSlide == 10){
-      console.log('slide 10');
-      if(admob){
-        console.log('admob is set');
-        admob.events.onAdLoaded({ adType : 'interstitial' });
-      }
+      alert('hello world');
+      // if(admob){
+      //   admob.events.onAdLoaded({ adType : 'interstitial' });
+      // }
     }
   });
 
