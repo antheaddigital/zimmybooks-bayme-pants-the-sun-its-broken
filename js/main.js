@@ -2,9 +2,10 @@ $(document).ready(function(){
 
   $('.slider').on('afterChange', function(event, slick, currentSlide){
     if(currentSlide == 10){
+      console.log('slide 10');
       if(admob){
-        //admob.showInterstitial();
-        admob.events.onAdLoaded();
+        console.log('admob is set');
+        admob.events.onAdLoaded({ adType : 'interstitial' });
       }
     }
   });

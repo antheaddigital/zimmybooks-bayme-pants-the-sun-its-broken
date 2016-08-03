@@ -88,7 +88,8 @@ function initAds() {
 
     admob.setOptions({
       publisherId: 'ca-app-pub-4899785129776182/7652659352',
-      interstitialAdId: 'ca-app-pub-4899785129776182/6653604159'
+      interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
+      isTesting: true
     });
 
     registerAdEvents();
@@ -99,12 +100,13 @@ function initAds() {
 }
 
 function onAdLoaded(e) {
-  //if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+  console.log('onAdLoaded success');
+  if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
     admob.showInterstitialAd();
     showNextInterstitial = setTimeout(function() {
       admob.requestInterstitialAd();
     }, 2 * 60 * 1000); // 2 minutes
-  //}
+  }
 }
 
 function registerAdEvents() {
