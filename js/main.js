@@ -90,7 +90,6 @@ function registerAdEvents() {
 function onDeviceReady() {
   document.removeEventListener('deviceready', onDeviceReady, false);
   initAds();
-  apFunctionality();
 
   // display a banner at startup
   admob.createBannerView();
@@ -99,6 +98,9 @@ function onDeviceReady() {
   admob.requestInterstitialAd();
 
   admob.showInterstitialAd();
+
+  //admob.events.onAdLoaded({ adType : 'interstitial' })
+
 }
 
 document.addEventListener("deviceready", onDeviceReady, false);
