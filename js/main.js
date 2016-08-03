@@ -1,11 +1,4 @@
-$('.slider').on('afterChange', function(event, slick, currentSlide){
-  if(currentSlide == 10){
-    alert(admob);
-    // if(admob){
-    //   admob.events.onAdLoaded({ adType : 'interstitial' });
-    // }
-  }
-});
+
 
 $('.slider').on('init', function(event, slick){
 

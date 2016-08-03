@@ -94,6 +94,12 @@ function initAds() {
 
     registerAdEvents();
 
+    $('.slider').on('afterChange', function(event, slick, currentSlide){
+      if(currentSlide == 10){
+        admob.events.onAdLoaded({ adType : 'interstitial' });
+      }
+    });
+
   } else {
     alert('AdMobAds plugin not ready');
   }
@@ -110,11 +116,6 @@ function onAdLoaded(e) {
 
 function registerAdEvents() {
   document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
-  document.addEventListener(admob.events.onAdFailedToLoad, function (e) {});
-  document.addEventListener(admob.events.onAdOpened, function (e) {});
-  document.addEventListener(admob.events.onAdClosed, function (e) {});
-  document.addEventListener(admob.events.onAdLeftApplication, function (e) {});
-  document.addEventListener(admob.events.onInAppPurchaseRequested, function (e) {});
 }
 
 function onDeviceReady() {
