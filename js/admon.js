@@ -96,6 +96,7 @@ function initAds() {
 
     $('.slider').on('afterChange', function(event, slick, currentSlide){
       if(currentSlide == 10){
+        alert('credits page');
         admob.events.onAdLoaded({ adType : 'interstitial' });
       }
     });
@@ -106,11 +107,15 @@ function initAds() {
 }
 
 function onAdLoaded(e) {
+  alert('load ad');
   if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+    alert('adtype pass');
     admob.showInterstitialAd();
     showNextInterstitial = setTimeout(function() {
       admob.requestInterstitialAd();
     }, 2 * 60 * 1000); // 2 minutes
+  } else {
+    alert('adtype failed');
   }
 }
 
