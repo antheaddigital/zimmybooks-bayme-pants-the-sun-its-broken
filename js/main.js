@@ -89,8 +89,9 @@ $(document).ready(function(){
 
   function onDeviceReady(){
     admob.requestInterstitialAd({
-      publisherId: "ca-app-pub-4899785129776182/5176870955",
-      interstitialAdId: "ca-app-pub-4899785129776182/6653604159"
+      publisherId: "ca-app-pub-4899785129776182/7652659352",
+      interstitialAdId: "ca-app-pub-4899785129776182/6653604159",
+      autoShowInterstitial: true
     });
     //adSetter();
   }
