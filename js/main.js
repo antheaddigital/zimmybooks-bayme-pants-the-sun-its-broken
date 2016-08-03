@@ -65,8 +65,6 @@ function initAds() {
       isTesting: true
     });
 
-    admob.showInterstitialAd();
-
     registerAdEvents();
 
   } else {
@@ -99,6 +97,8 @@ function onDeviceReady() {
 
   // request an interstitial
   admob.requestInterstitialAd();
+
+  admob.showInterstitialAd();
 }
 
 document.addEventListener("deviceready", onDeviceReady, false);
