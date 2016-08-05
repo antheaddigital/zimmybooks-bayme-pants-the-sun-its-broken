@@ -6,7 +6,7 @@ $('.slider').on('init', function(event, slick){
       //alert('credits page');
       //onAdLoaded();
       if(window.admob){
-        window.admob.events.onAdLoaded({ adType : 'interstitial' });
+        window.admob.onAdLoaded({ adType : 'interstitial' });
       }
     }
   });
@@ -65,10 +65,13 @@ function initAds() {
     window.admob.setOptions({
       publisherId: 'ca-app-pub-4899785129776182/7652659352',
       interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
+      autoShowInterstitial: false,
       isTesting: true
     });
 
     registerAdEvents();
+
+    window.admob.requestInterstitialAd();
 
   } else {
     console.log('AdMobAds plugin not ready');
@@ -90,11 +93,16 @@ function registerAdEvents() {
   document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
 }
 
-function onDeviceReady() {
-  console.log('after device ready call');
-
-  document.removeEventListener('deviceready', onDeviceReady, false);
+console.log('before device ready call');
+document.addEventListener("deviceready", function(){
   initAds();
+}, true);
+
+// function onDeviceReady() {
+//   console.log('after device ready call');
+//
+//   document.removeEventListener('deviceready', onDeviceReady, false);
+//   initAds();
 
   // window.admob.setOptions({
   //   publisherId: 'ca-app-pub-4899785129776182/7652659352',
@@ -106,11 +114,8 @@ function onDeviceReady() {
   // window.admob.createBannerView();
 
   // request an interstitial
-  window.admob.requestInterstitialAd();
+
 
   //admob.events.onAdLoaded({ adType : 'interstitial' })
 
-}
-
-console.log('before device ready call');
-document.addEventListener("deviceready", onDeviceReady, false);
+// }
