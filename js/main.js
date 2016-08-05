@@ -63,7 +63,7 @@ function initAds() {
       isTesting: true
     });
 
-    registerAdEvents();
+    //registerAdEvents();
 
     window.admob.requestInterstitialAd();
 
