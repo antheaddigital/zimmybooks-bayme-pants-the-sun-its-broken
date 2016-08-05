@@ -88,6 +88,7 @@ function registerAdEvents() {
 }
 
 function onDeviceReady() {
+  console.log('after device ready call');
   document.removeEventListener('deviceready', onDeviceReady, false);
   //initAds();
 
@@ -109,4 +110,5 @@ function onDeviceReady() {
 
 }
 
+console.log('before device ready call');
 document.addEventListener("deviceready", onDeviceReady, false);
