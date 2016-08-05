@@ -63,12 +63,8 @@ function initAds() {
       isTesting: true
     });
 
-    //registerAdEvents();
-
     window.admob.requestInterstitialAd();
 
-  } else {
-    console.log('AdMobAds plugin not ready');
   }
 }
 
@@ -76,21 +72,6 @@ function showAd(){
   console.log('showAd');
   window.admob.showInterstitialAd();
 }
-
-//function onAdLoaded(e) {
-  //alert('load ad');
-  //if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
-    //alert('adtype pass');
-    //window.admob.showInterstitialAd();
-    // showNextInterstitial = setTimeout(function() {
-    //   window.admob.requestInterstitialAd();
-    // }, 2 * 60 * 1000); // 2 minutes
-  //}
-//}
-
-// function registerAdEvents() {
-//   document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
-// }
 
 console.log('before device ready call');
 document.addEventListener("deviceready", function(){
