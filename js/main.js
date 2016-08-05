@@ -4,7 +4,7 @@ $('.slider').on('init', function(event, slick){
     //alert('change page');
     if(currentSlide == 10){
       //alert('credits page');
-      onAdLoaded();
+      //onAdLoaded();
     }
   });
 
@@ -45,7 +45,7 @@ $('.sign-link').magnificPopup({type:'image'});
 /* ---------------------------------------------------------------------- */
 
 function initAds() {
-  if (admob) {
+  if (window.admob) {
     // var adPublisherIds = {
     //   ios : {
     //     banner : "",
@@ -59,7 +59,7 @@ function initAds() {
     //
     // var admobid = (/(android)/i.test(navigator.userAgent)) ? adPublisherIds.android : adPublisherIds.ios;
 
-    admob.setOptions({
+    window.admob.setOptions({
       publisherId: 'ca-app-pub-4899785129776182/7652659352',
       interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
       isTesting: true
@@ -68,7 +68,7 @@ function initAds() {
     registerAdEvents();
 
   } else {
-    alert('AdMobAds plugin not ready');
+    console.log('AdMobAds plugin not ready');
   }
 }
 
@@ -76,9 +76,9 @@ function onAdLoaded(e) {
   //alert('load ad');
   //if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
     //alert('adtype pass');
-    admob.showInterstitialAd();
+    window.admob.showInterstitialAd();
     showNextInterstitial = setTimeout(function() {
-      admob.requestInterstitialAd();
+      window.admob.requestInterstitialAd();
     }, 2 * 60 * 1000); // 2 minutes
   //}
 }
@@ -91,19 +91,19 @@ function onDeviceReady() {
   document.removeEventListener('deviceready', onDeviceReady, false);
   //initAds();
 
-  admob.setOptions({
+  window.admob.setOptions({
     publisherId: 'ca-app-pub-4899785129776182/7652659352',
     interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
     isTesting: true
   });
 
   // display a banner at startup
-  admob.createBannerView();
+  window.admob.createBannerView();
 
   // request an interstitial
-  admob.requestInterstitialAd();
+  window.admob.requestInterstitialAd();
 
-  admob.showInterstitialAd();
+  window.admob.showInterstitialAd();
 
   //admob.events.onAdLoaded({ adType : 'interstitial' })
 
