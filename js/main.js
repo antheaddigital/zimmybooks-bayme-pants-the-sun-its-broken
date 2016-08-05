@@ -5,6 +5,9 @@ $('.slider').on('init', function(event, slick){
     if(currentSlide == 10){
       //alert('credits page');
       //onAdLoaded();
+      if(window.admob){
+        window.admob.events.onAdLoaded({ adType : 'interstitial' });
+      }
     }
   });
 
@@ -74,13 +77,13 @@ function initAds() {
 
 function onAdLoaded(e) {
   //alert('load ad');
-  //if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+  if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
     //alert('adtype pass');
     window.admob.showInterstitialAd();
-    showNextInterstitial = setTimeout(function() {
-      window.admob.requestInterstitialAd();
-    }, 2 * 60 * 1000); // 2 minutes
-  //}
+    // showNextInterstitial = setTimeout(function() {
+    //   window.admob.requestInterstitialAd();
+    // }, 2 * 60 * 1000); // 2 minutes
+  }
 }
 
 function registerAdEvents() {
@@ -90,21 +93,19 @@ function registerAdEvents() {
 function onDeviceReady() {
   console.log('after device ready call');
   document.removeEventListener('deviceready', onDeviceReady, false);
-  //initAds();
+  initAds();
 
-  window.admob.setOptions({
-    publisherId: 'ca-app-pub-4899785129776182/7652659352',
-    interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
-    isTesting: true
-  });
+  // window.admob.setOptions({
+  //   publisherId: 'ca-app-pub-4899785129776182/7652659352',
+  //   interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
+  //   isTesting: true
+  // });
 
   // display a banner at startup
   window.admob.createBannerView();
 
   // request an interstitial
   window.admob.requestInterstitialAd();
-
-  window.admob.showInterstitialAd();
 
   //admob.events.onAdLoaded({ adType : 'interstitial' })
 
