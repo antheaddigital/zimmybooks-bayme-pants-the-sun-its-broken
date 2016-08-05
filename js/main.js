@@ -36,9 +36,9 @@ $('.slider').slick({
   cssEase: 'linear'
 });
 
-$(window).on('resize', function(){
-  location.reload();
-});
+// $(window).on('resize', function(){
+//   location.reload();
+// });
 
 /* ---------------------------------------------------------------------- */
 
@@ -92,6 +92,7 @@ function registerAdEvents() {
 
 function onDeviceReady() {
   console.log('after device ready call');
+
   document.removeEventListener('deviceready', onDeviceReady, false);
   initAds();
 
@@ -102,7 +103,7 @@ function onDeviceReady() {
   // });
 
   // display a banner at startup
-  window.admob.createBannerView();
+  // window.admob.createBannerView();
 
   // request an interstitial
   window.admob.requestInterstitialAd();
