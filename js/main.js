@@ -111,28 +111,4 @@ function onDeviceReady() {
 }
 
 console.log('before device ready call');
-
-document.addEventListener("deviceready", function() {
-
-  console.log('after device ready call');
-  
-  document.removeEventListener('deviceready', onDeviceReady, false);
-  //initAds();
-
-  window.admob.setOptions({
-    publisherId: 'ca-app-pub-4899785129776182/7652659352',
-    interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
-    isTesting: true
-  });
-
-  // display a banner at startup
-  window.admob.createBannerView();
-
-  // request an interstitial
-  window.admob.requestInterstitialAd();
-
-  window.admob.showInterstitialAd();
-
-  //admob.events.onAdLoaded({ adType : 'interstitial' })
-
-}, true);
+document.addEventListener("deviceready", onDeviceReady, false);
