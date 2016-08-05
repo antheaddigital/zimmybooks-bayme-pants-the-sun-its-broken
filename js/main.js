@@ -4,7 +4,7 @@ $('.slider').on('init', function(event, slick){
   $('.slider').on('afterChange', function(event, slick, currentSlide){
     if(currentSlide == 10){
       if(window.admob){
-        window.admob.onAdLoaded({ adType : 'interstitial' });
+        showAd();
       }
     }
   });
