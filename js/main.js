@@ -1,10 +1,8 @@
 $('.slider').on('init', function(event, slick){
 
+  // watch slide - on credits show ad
   $('.slider').on('afterChange', function(event, slick, currentSlide){
-    //alert('change page');
     if(currentSlide == 10){
-      //alert('credits page');
-      //onAdLoaded();
       if(window.admob){
         window.admob.onAdLoaded({ adType : 'interstitial' });
       }
@@ -35,10 +33,6 @@ $('.slider').slick({
   dots: false,
   cssEase: 'linear'
 });
-
-// $(window).on('resize', function(){
-//   location.reload();
-// });
 
 /* ---------------------------------------------------------------------- */
 
@@ -78,44 +72,28 @@ function initAds() {
   }
 }
 
-function onAdLoaded(e) {
+function showAd(){
+  console.log('showAd');
+  window.admob.showInterstitialAd();
+}
+
+//function onAdLoaded(e) {
   //alert('load ad');
-  if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+  //if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
     //alert('adtype pass');
-    window.admob.showInterstitialAd();
+    //window.admob.showInterstitialAd();
     // showNextInterstitial = setTimeout(function() {
     //   window.admob.requestInterstitialAd();
     // }, 2 * 60 * 1000); // 2 minutes
-  }
-}
+  //}
+//}
 
-function registerAdEvents() {
-  document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
-}
+// function registerAdEvents() {
+//   document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
+// }
 
 console.log('before device ready call');
 document.addEventListener("deviceready", function(){
+  console.log('after device ready call');
   initAds();
 }, true);
-
-// function onDeviceReady() {
-//   console.log('after device ready call');
-//
-//   document.removeEventListener('deviceready', onDeviceReady, false);
-//   initAds();
-
-  // window.admob.setOptions({
-  //   publisherId: 'ca-app-pub-4899785129776182/7652659352',
-  //   interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
-  //   isTesting: true
-  // });
-
-  // display a banner at startup
-  // window.admob.createBannerView();
-
-  // request an interstitial
-
-
-  //admob.events.onAdLoaded({ adType : 'interstitial' })
-
-// }
