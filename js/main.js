@@ -89,7 +89,13 @@ function registerAdEvents() {
 
 function onDeviceReady() {
   document.removeEventListener('deviceready', onDeviceReady, false);
-  initAds();
+  //initAds();
+
+  admob.setOptions({
+    publisherId: 'ca-app-pub-4899785129776182/7652659352',
+    interstitialAdId: 'ca-app-pub-4899785129776182/6653604159',
+    isTesting: true
+  });
 
   // display a banner at startup
   admob.createBannerView();
