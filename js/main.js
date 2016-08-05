@@ -71,6 +71,9 @@ function initAds() {
 function showAd(){
   console.log('showAd');
   window.admob.showInterstitialAd();
+  showNextInterstitial = setTimeout(function() {
+    admob.requestInterstitialAd();
+  }, 2 * 60 * 1000); // 2 minutes - refresh new ad
 }
 
 console.log('before device ready call');
