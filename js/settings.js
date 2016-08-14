@@ -1,4 +1,4 @@
-settings = {
+window.appSettings = {
   admob : {
     android : {
       banner: 'ca-app-pub-4899785129776182/7652659352',

@@ -1,4 +1,4 @@
-var config = {
+window.appConfig = {
   staging: {
     isTesting: true
   },

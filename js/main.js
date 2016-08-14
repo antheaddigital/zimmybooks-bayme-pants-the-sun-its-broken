@@ -1,22 +1,8 @@
 /* ---------------------------------------------------------------------- */
-// Environment assign
-/* ---------------------------------------------------------------------- */
-
-var environment = config.environment;
-var envObj = envObj || {};
-switch(environment){
-  case 'staging':
-    envObj = config.staging;
-  break;
-  case 'production':
-    envObj = config.production;
-  break;
-}
-
-/* ---------------------------------------------------------------------- */
 // Slider functionality
 /* ---------------------------------------------------------------------- */
 
+// apply functionality after slick carousel is initilized
 $('.slider').on('init', function(event, slick){
 
   // watch slide - on credits show ad
@@ -47,6 +33,7 @@ $('.slider').on('init', function(event, slick){
 
 });
 
+// init slick carousel
 $('.slider').slick({
   infinite: true,
   dots: false,
@@ -57,6 +44,7 @@ $('.slider').slick({
 // Sign pop-up functionality
 /* ---------------------------------------------------------------------- */
 
+// init magnific popup
 $('.sign-link').magnificPopup({type:'image'});
 
 /* ---------------------------------------------------------------------- */
@@ -69,28 +57,31 @@ function initAds() {
     // select the right Ad Id according to platform
     if ( /(android)/i.test(navigator.userAgent) ) {
       admobid = { // for Android
-        banner: settings.admob.android.banner,
-        interstitial: settings.admob.android.interstitial
+        banner: window.appSettings.admob.android.banner,
+        interstitial: window.appSettings.admob.android.interstitial
       };
     } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
       admobid = { // for iOS
-        banner: settings.admob.ios.banner,
-        interstitial: settings.admob.ios.interstitial
+        banner: window.appSettings.admob.ios.banner,
+        interstitial: window.appSettings.admob.ios.interstitial
       };
     }
 
+    // admob options
     window.admob.setOptions({
       publisherId: admobid.banner,
       interstitialAdId: admobid.interstitial,
       autoShowInterstitial: false,
-      isTesting: window.envObj.isTesting
+      isTesting: appConfig[window.appEnvironment].isTesting // set test for ad
     });
 
+    // prep for interstitial ad
     window.admob.requestInterstitialAd();
 
   }
 }
 
+// show ad
 function showAd(){
   window.admob.showInterstitialAd();
   showNextInterstitial = setTimeout(function() {
@@ -98,6 +89,11 @@ function showAd(){
   }, 2 * 60 * 1000); // 2 minutes - refresh new ad
 }
 
+/* ---------------------------------------------------------------------- */
+// phonegap plugin initialization
+/* ---------------------------------------------------------------------- */
+
+// phonegap plugin trigger
 document.addEventListener("deviceready", function(){
-  initAds();
-}, true);
+  initAds(); // init admob
+}, true); // "true" will remove event listener after being triggered

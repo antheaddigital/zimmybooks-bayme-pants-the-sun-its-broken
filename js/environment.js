@@ -1,1 +1,1 @@
-var environment = 'staging';
+window.appEnvironment = 'staging';
