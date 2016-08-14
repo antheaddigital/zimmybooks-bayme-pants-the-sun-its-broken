@@ -14,16 +14,13 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="orientation" value="landscape" />
 
-    <plugin name="com.flurry.plugins.flurry" spec="3.4.8" source="pgb" />
+    <plugin name="com.appsee.plugin" spec="2.1.33" source="pgb" />
     <plugin name="com.admob.google" spec="4.0.8" source="pgb" />
 
     <access origin="*" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-
-    <access origin="http://*.google-analytics.com"/>
-    <access origin="https://*.google-analytics.com"/>
 
     <platform name="android">
         <allow-intent href="market:*" />
