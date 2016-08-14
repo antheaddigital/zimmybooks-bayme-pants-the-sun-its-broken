@@ -1,3 +1,7 @@
+/* ---------------------------------------------------------------------- */
+// Environment assign
+/* ---------------------------------------------------------------------- */
+
 var environment = config.environment;
 var envObj = envObj || {};
 switch(environment){
@@ -9,6 +13,8 @@ switch(environment){
   break;
 }
 
+/* ---------------------------------------------------------------------- */
+// Slider functionality
 /* ---------------------------------------------------------------------- */
 
 $('.slider').on('init', function(event, slick){
@@ -48,37 +54,28 @@ $('.slider').slick({
 });
 
 /* ---------------------------------------------------------------------- */
-
 // Sign pop-up functionality
+/* ---------------------------------------------------------------------- */
+
 $('.sign-link').magnificPopup({type:'image'});
 
+/* ---------------------------------------------------------------------- */
+// Admon functionality
 /* ---------------------------------------------------------------------- */
 
 function initAds() {
   if (window.admob) {
-    // var adPublisherIds = {
-    //   ios : {
-    //     banner : "",
-    //     interstitial : ""
-    //   },
-    //   android : {
-    //     banner : "ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB",
-    //     interstitial : "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII"
-    //   }
-    // };
-    //
-    // var admobid = (/(android)/i.test(navigator.userAgent)) ? adPublisherIds.android : adPublisherIds.ios;
 
     // select the right Ad Id according to platform
     if ( /(android)/i.test(navigator.userAgent) ) {
       admobid = { // for Android
-        banner: 'ca-app-pub-4899785129776182/7652659352',
-        interstitial: 'ca-app-pub-4899785129776182/6653604159'
+        banner: settings.admob.android.banner,
+        interstitial: settings.admob.android.interstitial
       };
     } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
       admobid = { // for iOS
-        //banner: 'ca-app-pub-6869992474017983/4806197152',
-        //interstitial: 'ca-app-pub-6869992474017983/7563979554'
+        banner: settings.admob.ios.banner,
+        interstitial: settings.admob.ios.interstitial
       };
     }
 
