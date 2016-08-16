@@ -10,7 +10,7 @@ $('.slider').on('init', function(event, slick){
     if(currentSlide == window.appSettings.creditsSlide){
       if(window.admob){
         showAd();
-        _paq.push(['trackGoal', window.appSettings.piwikCreditsPageID]);
+        _paq.push(['trackGoal', window.appSettings.piwik[window.appEnvironment].creditsPageGoalID]);
       }
     }
   });
@@ -73,7 +73,7 @@ function initAds() {
       publisherId: admobid.banner,
       interstitialAdId: admobid.interstitial,
       autoShowInterstitial: false,
-      isTesting: appConfig[window.appEnvironment].isTesting // set test for ad
+      isTesting: window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
     });
 
     // prep for interstitial ad

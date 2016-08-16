@@ -1,8 +1,10 @@
 window.appConfig = {
-  staging: {
-    isTesting: true
-  },
-  production: {
-    isTesting: false
+  admob: {
+    staging: {
+      isTesting: true
+    },
+    production: {
+      isTesting: false
+    }
   }
 }

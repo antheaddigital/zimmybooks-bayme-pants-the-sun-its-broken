@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/main.css">
 
+  <!-- Custom JS -->
+  <script type="text/javascript" src="js/environment.js"></script>
+  <script type="text/javascript" src="js/settings.js"></script>
+  <script type="text/javascript" src="js/config.js"></script>
+
   <!-- Vorlon debugging -->
   <!-- <script src="http://vorlonjs1134.azurewebsites.net/vorlon.js"></script> -->
 
@@ -27,7 +32,7 @@
     (function() {
       var u="http://ptracking.antheaddigital.com/";
       _paq.push(['setTrackerUrl', u+'piwik.php']);
-      _paq.push(['setSiteId', '2']);
+      _paq.push(['setSiteId', window.appSettings.piwik[window.appEnvironment].websiteID]);
       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
       g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
     })();
@@ -107,9 +112,6 @@
   <script type="text/javascript" src="libs/magnific-popup/magnific-popup.min.js"></script>
   <script type="text/javascript" src="cordova.js"></script>
   <!-- Custom JS -->
-  <script type="text/javascript" src="js/environment.js"></script>
-  <script type="text/javascript" src="js/settings.js"></script>
-  <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
