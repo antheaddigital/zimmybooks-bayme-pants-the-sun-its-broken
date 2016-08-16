@@ -7,9 +7,10 @@ $('.slider').on('init', function(event, slick){
 
   // watch slide - on credits show ad
   $('.slider').on('afterChange', function(event, slick, currentSlide){
-    if(currentSlide == 10){
+    if(currentSlide == window.appSettings.creditsSlide){
       if(window.admob){
         showAd();
+        _paq.push(['trackGoal', window.appSettings.piwikCreditsPageID]);
       }
     }
   });
