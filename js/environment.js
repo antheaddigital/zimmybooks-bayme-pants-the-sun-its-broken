@@ -1,1 +1,1 @@
-window.appEnvironment = 'production';
+window.appEnvironment = 'staging';
