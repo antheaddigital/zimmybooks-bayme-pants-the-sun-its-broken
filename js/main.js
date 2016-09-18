@@ -97,5 +97,6 @@ function showAd(){
 
 // phonegap plugin trigger
 document.addEventListener("deviceready", function(){
+  window.admob = admob.initAdmob();
   initAds(); // init admob
 }, true); // "true" will remove event listener after being triggered
