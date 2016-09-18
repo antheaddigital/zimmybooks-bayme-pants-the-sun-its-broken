@@ -73,6 +73,7 @@ function initAds() {
       publisherId: admobid.banner,
       interstitialAdId: admobid.interstitial,
       autoShowInterstitial: false,
+      isForChild: true,
       isTesting: window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
     });
 
