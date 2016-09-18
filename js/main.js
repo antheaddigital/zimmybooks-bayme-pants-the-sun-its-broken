@@ -9,6 +9,7 @@ $('.slider').on('init', function(event, slick){
   $('.slider').on('afterChange', function(event, slick, currentSlide){
     if(currentSlide == window.appSettings.creditsSlide){
       if(window.admob){
+        console.log('show ad');
         showAd();
         _paq.push(['trackGoal', window.appSettings.piwik[window.appEnvironment].creditsPageGoalID]);
       }
@@ -69,26 +70,35 @@ function initAds() {
     }
 
     // admob options
-    window.admob.setOptions({
-      publisherId: admobid.banner,
-      interstitialAdId: admobid.interstitial,
-      autoShowInterstitial: false,
-      isForChild: true,
-      isTesting: window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
-    });
+    var admobParam = new window.admob.Params();
+    admobParam.publisherId = admobid.banner;
+    admobParam.interstitialAdId = admobid.interstitial;
+    admobParam.autoShowInterstitial = false;
+    admobParam.isForChild = true;
+    admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
+    console.log(admobParam);
+    // window.admob.setOptions({
+    //   publisherId: admobid.banner,
+    //   interstitialAdId: admobid.interstitial,
+    //   autoShowInterstitial: false,
+    //   isForChild: true,
+    //   isTesting: window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
+    // });
 
     // prep for interstitial ad
-    window.admob.requestInterstitialAd();
+    //window.admob.requestInterstitialAd();
+    window.admob.cacheInterstitial();
 
   }
 }
 
 // show ad
 function showAd(){
-  window.admob.showInterstitialAd();
-  showNextInterstitial = setTimeout(function() {
-    admob.requestInterstitialAd();
-  }, 2 * 60 * 1000); // 2 minutes - refresh new ad
+  window.admob.showInterstitial();
+  // window.admob.showInterstitialAd();
+  // showNextInterstitial = setTimeout(function() {
+  //   admob.requestInterstitialAd();
+  // }, 2 * 60 * 1000); // 2 minutes - refresh new ad
 }
 
 /* ---------------------------------------------------------------------- */
