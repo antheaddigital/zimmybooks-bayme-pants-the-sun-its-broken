@@ -14,7 +14,8 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="orientation" value="landscape" />
 
-    <plugin name="com.admob.google" spec="4.0.8" source="pgb" />
+    <preference name="android-build-tool" value="gradle" />
+    <gap:plugin name="cordova-plugin-admobpro" source="npm" />
 
     <icon src="res/icon.png" />
     <platform name="android">
