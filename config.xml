@@ -1,13 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.baymepantsthesunitsbroken" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="bayme-pants-the-sun-its-broken" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
-    <name>Bayme Pants - The Sun! It's Broken!</name>
-    <description>
-        This is strictly a foundation for any book app.
-    </description>
-    <author href="https://antheaddigital.com" email="accounts@antheaddigital.com">
-      Anthead Digital
-    </author>
+    <name>Bayme Pants in The Sun! It's Broken!</name>
+    <description>Bayme Pants in The Sun! It's Broken! - A short story designed to teach young kids and toddlers sign language.</description>
+    <author href="https://zimmybooks.com" email="support@antheaddigital.com">Zimmy Books</author>
     <content src="index.html" />
 
     <preference name="DisallowOverscroll" value="true" />
