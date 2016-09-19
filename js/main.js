@@ -9,6 +9,7 @@ $('.slider').on('init', function(event, slick){
   $('.slider').on('afterChange', function(event, slick, currentSlide){
     if(currentSlide == window.appSettings.creditsSlide){
       if(window.admob){
+        //console.log('show ad');
         showAd();
         _paq.push(['trackGoal', window.appSettings.piwik[window.appEnvironment].creditsPageGoalID]);
       }
@@ -49,46 +50,41 @@ $('.slider').slick({
 $('.sign-link').magnificPopup({type:'image'});
 
 /* ---------------------------------------------------------------------- */
-// Admon functionality
+// Admob functionality
 /* ---------------------------------------------------------------------- */
 
+// initialize ads
 function initAds() {
-  if (window.admob) {
 
-    // select the right Ad Id according to platform
-    if ( /(android)/i.test(navigator.userAgent) ) {
-      admobid = { // for Android
-        banner: window.appSettings.admob.android.banner,
-        interstitial: window.appSettings.admob.android.interstitial
-      };
-    } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
-      admobid = { // for iOS
-        banner: window.appSettings.admob.ios.banner,
-        interstitial: window.appSettings.admob.ios.interstitial
-      };
-    }
-
-    // admob options
-    window.admob.setOptions({
-      publisherId: admobid.banner,
-      interstitialAdId: admobid.interstitial,
-      autoShowInterstitial: false,
-      isForChild: true,
-      isTesting: window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
-    });
-
-    // prep for interstitial ad
-    window.admob.requestInterstitialAd();
-
+  // select the right Ad Id according to platform
+  if ( /(android)/i.test(navigator.userAgent) ) {
+    window.admobid = { // for Android
+      banner: window.appSettings.admob.android.banner,
+      interstitial: window.appSettings.admob.android.interstitial
+    };
+  } else if ( /(ipod|iphone|ipad)/i.test(navigator.userAgent) ) {
+    window.admobid = { // for iOS
+      banner: window.appSettings.admob.ios.banner,
+      interstitial: window.appSettings.admob.ios.interstitial
+    };
   }
+
+  //console.log('device ready');
+  admob.initAdmob(window.admobid.banner, window.admobid.interstitial);
+
+  // admob params
+  var admobParam = new admob.Params();
+  admobParam.isForChild = true;
+  admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
+
+  // prep for interstitial ad
+  admob.cacheInterstitial();
+
 }
 
 // show ad
 function showAd(){
-  window.admob.showInterstitialAd();
-  showNextInterstitial = setTimeout(function() {
-    admob.requestInterstitialAd();
-  }, 2 * 60 * 1000); // 2 minutes - refresh new ad
+  admob.showInterstitial();
 }
 
 /* ---------------------------------------------------------------------- */
