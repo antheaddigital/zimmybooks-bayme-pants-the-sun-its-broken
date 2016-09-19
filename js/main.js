@@ -69,7 +69,6 @@ function initAds() {
     };
   }
 
-  //console.log('device ready');
   admob.initAdmob(window.admobid.banner, window.admobid.interstitial);
 
   // admob params
