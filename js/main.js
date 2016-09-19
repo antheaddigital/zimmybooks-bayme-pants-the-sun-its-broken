@@ -55,6 +55,7 @@ $('.sign-link').magnificPopup({type:'image'});
 
 // initialize ads
 function initAds() {
+  alert('init ads');
 
   // select the right Ad Id according to platform
   if ( /(android)/i.test(navigator.userAgent) ) {
@@ -69,12 +70,16 @@ function initAds() {
     };
   }
 
+  alert(window.admobid.banner);
+  alert(window.admobid.interstitial);
+
   admob.initAdmob(window.admobid.banner, window.admobid.interstitial);
 
   // admob params
   var admobParam = new admob.Params();
   //admobParam.isForChild = true;
   admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
+  alert(admobParam.isTesting);
 
   // prep for interstitial ad
   admob.cacheInterstitial();
@@ -83,6 +88,7 @@ function initAds() {
 
 // show ad
 function showAd(){
+  alert('show ad');
   admob.showInterstitial();
 }
 
