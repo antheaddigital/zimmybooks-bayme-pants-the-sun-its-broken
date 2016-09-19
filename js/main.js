@@ -69,20 +69,19 @@ function initAds() {
     };
   }
 
-  alert(window.admobid.banner);
-  alert(window.admobid.interstitial);
-
   admob.initAdmob(window.admobid.banner, window.admobid.interstitial);
 
   // admob params
   var admobParam = new admob.Params();
   //admobParam.isForChild = true;
   admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
-  alert(admobParam.isTesting);
 
   // prep for interstitial ad
   admob.cacheInterstitial();
-
+  document.addEventListener(admob.Event.onInterstitialPresent, onInterstitialPresent, false);
+  function onInterstitialPresent(message) {//show in ad receive event fun
+    alert('int present');
+  }
   document.addEventListener(admob.Event.onInterstitialFailedReceive, onInterstitialFailedReceive, false);
   function onInterstitialFailedReceive(message) {//show in ad receive event fun
     alert('int failed');
