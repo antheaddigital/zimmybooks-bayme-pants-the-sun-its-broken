@@ -53,6 +53,7 @@ $('.sign-link').magnificPopup({type:'image'});
 // Admob functionality
 /* ---------------------------------------------------------------------- */
 
+// initialize ads
 function initAds() {
 
   // select the right Ad Id according to platform
