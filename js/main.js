@@ -9,7 +9,7 @@ $('.slider').on('init', function(event, slick){
   $('.slider').on('afterChange', function(event, slick, currentSlide){
     if(currentSlide == window.appSettings.creditsSlide){
       if(window.admob){
-        console.log('show ad');
+        //console.log('show ad');
         showAd();
         _paq.push(['trackGoal', window.appSettings.piwik[window.appEnvironment].creditsPageGoalID]);
       }
@@ -56,27 +56,14 @@ $('.sign-link').magnificPopup({type:'image'});
 function initAds() {
   if (window.admob) {
 
-    // select the right Ad Id according to platform
-    if ( /(android)/i.test(navigator.userAgent) ) {
-      admobid = { // for Android
-        banner: window.appSettings.admob.android.banner,
-        interstitial: window.appSettings.admob.android.interstitial
-      };
-    } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
-      admobid = { // for iOS
-        banner: window.appSettings.admob.ios.banner,
-        interstitial: window.appSettings.admob.ios.interstitial
-      };
-    }
+
 
     // admob options
     var admobParam = new window.admob.Params();
-    admobParam.publisherId = admobid.banner;
-    admobParam.interstitialAdId = admobid.interstitial;
-    admobParam.autoShowInterstitial = false;
+    //admobParam.autoShowInterstitial = false;
     admobParam.isForChild = true;
-    admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
-    console.log(admobParam);
+    admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
+    //console.log(admobParam);
     // window.admob.setOptions({
     //   publisherId: admobid.banner,
     //   interstitialAdId: admobid.interstitial,
@@ -107,6 +94,25 @@ function showAd(){
 
 // phonegap plugin trigger
 document.addEventListener("deviceready", function(){
-  window.admob = admob.initAdmob();
+
+  var admobid = {};
+  // select the right Ad Id according to platform
+  if ( /(android)/i.test(navigator.userAgent) ) {
+    admobid = { // for Android
+      banner: window.appSettings.admob.android.banner,
+      interstitial: window.appSettings.admob.android.interstitial
+    };
+  } else if ( /(ipod|iphone|ipad)/i.test(navigator.userAgent) ) {
+    admobid = { // for iOS
+      banner: window.appSettings.admob.ios.banner,
+      interstitial: window.appSettings.admob.ios.interstitial
+    };
+  }
+
+  //console.log('device ready');
+  window.admob = admob.initAdmob(admobid.banner, admobid.interstitial);
+
+  //console.log('admob init');
   initAds(); // init admob
+
 }, true); // "true" will remove event listener after being triggered
