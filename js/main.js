@@ -50,42 +50,40 @@ $('.slider').slick({
 $('.sign-link').magnificPopup({type:'image'});
 
 /* ---------------------------------------------------------------------- */
-// Admon functionality
+// Admob functionality
 /* ---------------------------------------------------------------------- */
 
 function initAds() {
-  if (window.admob) {
 
-
-
-    // admob options
-    var admobParam = new window.admob.Params();
-    //admobParam.autoShowInterstitial = false;
-    admobParam.isForChild = true;
-    admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
-    //console.log(admobParam);
-    // window.admob.setOptions({
-    //   publisherId: admobid.banner,
-    //   interstitialAdId: admobid.interstitial,
-    //   autoShowInterstitial: false,
-    //   isForChild: true,
-    //   isTesting: window.appConfig.admob[window.appEnvironment].isTesting // set test for ad
-    // });
-
-    // prep for interstitial ad
-    //window.admob.requestInterstitialAd();
-    window.admob.cacheInterstitial();
-
+  // select the right Ad Id according to platform
+  if ( /(android)/i.test(navigator.userAgent) ) {
+    window.admobid = { // for Android
+      banner: window.appSettings.admob.android.banner,
+      interstitial: window.appSettings.admob.android.interstitial
+    };
+  } else if ( /(ipod|iphone|ipad)/i.test(navigator.userAgent) ) {
+    window.admobid = { // for iOS
+      banner: window.appSettings.admob.ios.banner,
+      interstitial: window.appSettings.admob.ios.interstitial
+    };
   }
+
+  //console.log('device ready');
+  admob.initAdmob(window.admobid.banner, window.admobid.interstitial);
+
+  // admob params
+  var admobParam = new admob.Params();
+  admobParam.isForChild = true;
+  admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
+
+  // prep for interstitial ad
+  admob.cacheInterstitial();
+
 }
 
 // show ad
 function showAd(){
-  window.admob.showInterstitial();
-  // window.admob.showInterstitialAd();
-  // showNextInterstitial = setTimeout(function() {
-  //   admob.requestInterstitialAd();
-  // }, 2 * 60 * 1000); // 2 minutes - refresh new ad
+  admob.showInterstitial();
 }
 
 /* ---------------------------------------------------------------------- */
@@ -94,25 +92,5 @@ function showAd(){
 
 // phonegap plugin trigger
 document.addEventListener("deviceready", function(){
-
-  var admobid = {};
-  // select the right Ad Id according to platform
-  if ( /(android)/i.test(navigator.userAgent) ) {
-    admobid = { // for Android
-      banner: window.appSettings.admob.android.banner,
-      interstitial: window.appSettings.admob.android.interstitial
-    };
-  } else if ( /(ipod|iphone|ipad)/i.test(navigator.userAgent) ) {
-    admobid = { // for iOS
-      banner: window.appSettings.admob.ios.banner,
-      interstitial: window.appSettings.admob.ios.interstitial
-    };
-  }
-
-  //console.log('device ready');
-  window.admob = admob.initAdmob(admobid.banner, admobid.interstitial);
-
-  //console.log('admob init');
   initAds(); // init admob
-
 }, true); // "true" will remove event listener after being triggered
