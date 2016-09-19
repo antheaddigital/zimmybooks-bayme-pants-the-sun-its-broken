@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="bayme-pants-the-sun-its-broken" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.phonegap.baymepantsthesunitsbroken" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>Bayme Pants in The Sun! It's Broken!</name>
     <description>Bayme Pants in The Sun! It's Broken! - A short story designed to teach young kids and toddlers sign language.</description>
