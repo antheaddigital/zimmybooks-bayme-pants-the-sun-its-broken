@@ -69,24 +69,26 @@ function initAds() {
     };
   }
 
+  // admob init
   admob.initAdmob(window.admobid.banner, window.admobid.interstitial);
 
   // admob params
   var admobParam = new admob.Params();
-  //admobParam.isForChild = true;
-  admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
+  admobParam.isForChild = true;
+  admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting;
 
   // prep for interstitial ad
+  admob.cacheInterstitial();
+
+  // interstitial ad event tests
   document.addEventListener(admob.Event.onInterstitialPresent, onInterstitialPresent, false);
   function onInterstitialPresent(message) {
     alert('int present');
   }
-  admob.cacheInterstitial();
-
   document.addEventListener(admob.Event.onInterstitialFailedReceive, onInterstitialFailedReceive, false);
   function onInterstitialFailedReceive(message) {
     alert('int failed');
-    alert(message);
+    alert(message.error);
   }
   document.addEventListener(admob.Event.onInterstitialReceive, onInterstitialReceive, false);
   function onInterstitialReceive(message) {
@@ -95,14 +97,17 @@ function initAds() {
 
 }
 
-// show ad
+// show ad if interstitial is ready
 function showAd(){
-  alert('show ad');
-  admob.showInterstitial();
+  admob.isInterstitialReady(function(isReady){
+    if(isReady){
+      admob.showInterstitial();
+    }
+  });
 }
 
 /* ---------------------------------------------------------------------- */
-// phonegap plugin initialization
+// Phonegap plugin initialization
 /* ---------------------------------------------------------------------- */
 
 // phonegap plugin trigger
