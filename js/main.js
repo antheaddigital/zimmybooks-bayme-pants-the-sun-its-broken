@@ -77,17 +77,19 @@ function initAds() {
   admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting; // set test for ad
 
   // prep for interstitial ad
-  admob.cacheInterstitial();
   document.addEventListener(admob.Event.onInterstitialPresent, onInterstitialPresent, false);
-  function onInterstitialPresent(message) {//show in ad receive event fun
+  function onInterstitialPresent(message) {
     alert('int present');
   }
+  admob.cacheInterstitial();
+
   document.addEventListener(admob.Event.onInterstitialFailedReceive, onInterstitialFailedReceive, false);
-  function onInterstitialFailedReceive(message) {//show in ad receive event fun
+  function onInterstitialFailedReceive(message) {
     alert('int failed');
+    alert(message);
   }
   document.addEventListener(admob.Event.onInterstitialReceive, onInterstitialReceive, false);
-  function onInterstitialReceive(message) {//show in ad receive event fun
+  function onInterstitialReceive(message) {
     alert('int received');
   }
 
