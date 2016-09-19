@@ -83,16 +83,16 @@ function initAds() {
   // interstitial ad event tests
   document.addEventListener(admob.Event.onInterstitialPresent, onInterstitialPresent, false);
   function onInterstitialPresent(message) {
-    alert('int present');
+    console.log('int present');
   }
   document.addEventListener(admob.Event.onInterstitialFailedReceive, onInterstitialFailedReceive, false);
   function onInterstitialFailedReceive(message) {
-    alert('int failed');
-    alert(message.error);
+    console.log('int failed');
+    console.log(message);
   }
   document.addEventListener(admob.Event.onInterstitialReceive, onInterstitialReceive, false);
   function onInterstitialReceive(message) {
-    alert('int received');
+    console.log('int received');
   }
 
 }
