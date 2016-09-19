@@ -78,7 +78,7 @@ function initAds() {
   admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting;
 
   // prep for interstitial ad
-  admob.cacheInterstitial(admobParam);
+  // admob.cacheInterstitial(admobParam);
 
   // interstitial ad event tests
   document.addEventListener(admob.Event.onInterstitialPresent, onInterstitialPresent, false);
