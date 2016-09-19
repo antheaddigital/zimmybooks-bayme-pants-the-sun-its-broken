@@ -55,7 +55,6 @@ $('.sign-link').magnificPopup({type:'image'});
 
 // initialize ads
 function initAds() {
-  alert('init ads');
 
   // select the right Ad Id according to platform
   if ( /(android)/i.test(navigator.userAgent) ) {
@@ -83,6 +82,15 @@ function initAds() {
 
   // prep for interstitial ad
   admob.cacheInterstitial();
+
+  document.addEventListener(admob.Event.onInterstitialFailedReceive, onInterstitialFailedReceive, false);
+  function onInterstitialFailedReceive(message) {//show in ad receive event fun
+    alert('int failed');
+  }
+  document.addEventListener(admob.Event.onInterstitialReceive, onInterstitialReceive, false);
+  function onInterstitialReceive(message) {//show in ad receive event fun
+    alert('int received');
+  }
 
 }
 
