@@ -76,6 +76,7 @@ function initAds() {
   var admobParam = new admob.Params();
   admobParam.isForChild = true;
   admobParam.isTesting = window.appConfig.admob[window.appEnvironment].isTesting;
+  console.log(admobParam);
 
   // prep for interstitial ad
   // admob.cacheInterstitial(admobParam);
